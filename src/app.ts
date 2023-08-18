@@ -24,9 +24,9 @@ app.use(helmet());
 
 app.use(express.json());
 
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.send(`INCOMING REQUEST ${req.method}`);
-})
+// app.use((req: Request, res: Response, next: NextFunction) => {
+//     res.send(`INCOMING REQUEST ${req.method}`);
+// })
 
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     res.status(500).send(error.message);

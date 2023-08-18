@@ -7,9 +7,9 @@ const myDataSource = new DataSource({
     username: "root",
     password: "password",
     database: "griffo_setup",
-    entities: ["src/models/*.js"],
+    entities: ["src/models/*.{ts,js}"],
     logging: true,
-    synchronize: true,
+    synchronize: false,
 })
 
 export default myDataSource;

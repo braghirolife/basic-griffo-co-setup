@@ -3,7 +3,6 @@ import { User } from "../models/user";
 
 const session = myDataSource.getRepository(User)
 
-
 async function create(user: User){
         let user_to_b_created = new User()
         user_to_b_created.address = user.address
