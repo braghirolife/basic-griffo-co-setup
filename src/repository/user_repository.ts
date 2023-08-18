@@ -1,5 +1,5 @@
-import myDataSource from "src/infra/app-data-source"
-import { User } from "src/models/user";
+import myDataSource from "../infra/app-data-source"
+import { User } from "../models/user";
 
 const session = myDataSource.getRepository(User)
 
@@ -11,7 +11,8 @@ async function create(user: User){
         user_to_b_created.first_name = user.first_name
         user_to_b_created.last_name = user.last_name
 
-        session.create(user_to_b_created)
+        const user_created = session.create(user_to_b_created)
+        await session.save(user_created)
         return user_to_b_created
     }
 
