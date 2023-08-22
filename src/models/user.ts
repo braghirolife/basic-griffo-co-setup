@@ -6,6 +6,9 @@ export class User{
     id: number
 
     @Column()
+    document_number: string
+
+    @Column()
     first_name: string
 
     @Column()
