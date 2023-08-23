@@ -23,12 +23,12 @@ function get_user_by_document_number(req: Request, resp: Response, next: NextFun
         })
         resp.status(400)
     }
-    else{
-        resp.send({
-            'name': user.
-        })
-        resp.status(200)
-    }
+    // else{
+    //     resp.send({
+    //         'name': user.
+    //     })
+    //     resp.status(200)
+    // }
 
 }
 
