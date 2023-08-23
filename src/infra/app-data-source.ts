@@ -4,12 +4,12 @@ const myDataSource = new DataSource({
     type: "mysql",
     host: "localhost",
     port: 3306,
-    username: "test",
-    password: "test",
-    database: "test",
-    entities: ["src/models/*.js"],
+    username: "root",
+    password: "password",
+    database: "griffo_setup",
+    entities: ["src/models/*.{ts,js}"],
     logging: true,
-    synchronize: true,
+    synchronize: false,
 })
 
 export default myDataSource;

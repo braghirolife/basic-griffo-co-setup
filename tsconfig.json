@@ -14,8 +14,8 @@
     "strict": true,
     "skipLibCheck": true,
     "emitDecoratorMetadata": true,
-    "allowImportingTsExtensions": true,  
-    "noEmit": true
+    // "allowImportingTsExtensions": true,  
+    // "noEmit": true
   },
   "ts-node": { "transpileOnly": true },
 }
