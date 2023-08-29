@@ -1,5 +1,5 @@
 import { json } from "stream/consumers";
-import myDataSource from "../infra/app-data-source"
+import myDataSource from "../utils/app-data-source"
 import { User } from "../models/user";
 
 const session = myDataSource.getRepository(User)

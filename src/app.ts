@@ -2,7 +2,7 @@ import express, {Request, Response, NextFunction} from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
-import myDataSource from "./infra/app-data-source";
+import myDataSource from "./utils/app-data-source";
 import UserRoute from "./routers/user_router";
 
 myDataSource
