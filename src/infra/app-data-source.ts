@@ -8,6 +8,7 @@ const myDataSource = new DataSource({
     password: "password",
     database: "griffo_setup",
     entities: ["src/models/*.{ts,js}"],
+    migrations: ["scr/migrations/*.{ts,js}"],
     logging: true,
     synchronize: false,
 })
