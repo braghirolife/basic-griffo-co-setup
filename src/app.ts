@@ -5,7 +5,9 @@ import helmet from 'helmet';
 import myDataSource from "./utils/app-data-source";
 import UserRoute from "./routers/user_router";
 
-myDataSource
+setTimeout(() => 
+{
+    myDataSource
     .initialize()
     .then(() => {
         console.log("Data Source has been initialized!")
@@ -13,6 +15,8 @@ myDataSource
     .catch((err) => {
         console.error("Error during Data Source initialization:", err)
     })
+},
+1000);
 
 const app = express()
 

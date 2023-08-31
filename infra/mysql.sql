@@ -10,5 +10,3 @@ CREATE TABLE griffo_setup.User(
 );
 
 ALTER TABLE griffo_setup.USER ADD COLUMN address varchar(250) AFTER age;
-
-SELECT * FROM griffo_setup.User;

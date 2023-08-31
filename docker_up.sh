@@ -1,3 +1,7 @@
+cd infra
+docker-compose down -v
+cd ..
+
 echo "Copying docker-compose..."
 
 cp infra/docker-compose.yaml docker-compose.yaml
@@ -8,7 +12,7 @@ cp infra/Dockerfile-api Dockerfile-api
 
 echo "Executing docker-compose"
 
-docker-compose build
+docker-compose build --progress=plain
 
 docker-compose up
 

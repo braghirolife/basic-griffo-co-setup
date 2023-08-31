@@ -1,11 +1,12 @@
+import { time } from "console";
 import { DataSource } from "typeorm"
 
 // console.log(`String text ${process.env.DB_HOST}`)
 
 const myDataSource = new DataSource({
     type: "mysql",
-    host: "172.18.0.2",
-    // host: "172.0.0.1",
+    // host: "172.18.0.2",
+    host: "mysql-db",
     port: 3306,
     username: "root",
     password: "password",
