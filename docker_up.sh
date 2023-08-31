@@ -8,9 +8,9 @@ cp infra/Dockerfile-api Dockerfile-api
 
 echo "Executing docker-compose"
 
-DOCKER_BUILDKIT=0 docker-compose --progress=plain build
+docker-compose build
 
-DOCKER_BUILDKIT=0 docker-compose --progress=plain up
+docker-compose up
 
 mv Dockerfile-api .Dockerfile-api
 mv docker-compose.yaml .docker-compose.yaml
