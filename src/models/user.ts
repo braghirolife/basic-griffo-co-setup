@@ -1,14 +1,14 @@
 import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity()
-export class User{
+@Entity({name: "userr"})
+export class Userr{
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    document_number: string
-
-    @Column()
+    @Column({
+        length: 200,
+        nullable: false
+    })
     first_name: string
 
     @Column()
@@ -16,7 +16,4 @@ export class User{
 
     @Column()
     age: number
-
-    @Column()
-    address: string
 }

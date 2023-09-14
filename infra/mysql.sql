@@ -1,12 +1,10 @@
-CREATE DATABASE griffo_setup;  
+CREATE DATABASE griffo;  
 
-CREATE TABLE griffo_setup.User(
-	id int NOT NULL AUTO_INCREMENT,
+\c griffo;
+
+CREATE TABLE Userr(
+	id SERIAL PRIMARY KEY,
     first_name varchar(250) NOT NULL,
     last_name varchar(250) NOT NULL,
-    age int NOT NULL,
-    
-    PRIMARY KEY (id)
+    age int NOT NULL
 );
-
-ALTER TABLE griffo_setup.USER ADD COLUMN address varchar(250) AFTER age;

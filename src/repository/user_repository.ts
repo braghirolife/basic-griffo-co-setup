@@ -1,16 +1,14 @@
 import { json } from "stream/consumers";
 import myDataSource from "../utils/app-data-source"
-import { User } from "../models/user";
+import { Userr } from "../models/user";
 
-const session = myDataSource.getRepository(User)
+const session = myDataSource.getRepository(Userr)
 
-async function create(user: User){
-    let user_to_b_created = new User()
-    user_to_b_created.address = user.address
+async function create(user: Userr){
+    let user_to_b_created = new Userr()
     user_to_b_created.age = user.age
     user_to_b_created.first_name = user.first_name
     user_to_b_created.last_name = user.last_name
-    user_to_b_created.document_number = user.document_number
 
     const user_created = session.create(user_to_b_created)
     await session.save(user_created)
@@ -20,7 +18,7 @@ async function create(user: User){
 async function get_user_by_document_number(owner_document_number: string){
     let user = session.findOne({
         'where': {
-            document_number : owner_document_number
+            first_name : owner_document_number
         }
     })    
 
