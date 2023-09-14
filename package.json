@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "npx nodemon src/server.ts --watch 'src/' -e ts",
     "compile": "npx tsc",
-    "start": "node ./dist/server.js"
+    "start": "node ./dist/server.js",
+    "migration:generate": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,8 @@
     "express-async-errors": "^3.1.1",
     "helmet": "^7.0.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
+    "mysql": "npm:mysql2@^2.1.0",
+    "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17"
   },

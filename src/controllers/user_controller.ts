@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express";
-import { User } from "../models/user";
+import { Userr } from "../models/user";
 import UserRepository from "../repository/user_repository"
 
- function create_user(req: Request, resp: Response, next: NextFunction){
-    const user = req.body as User;
-    const success =  UserRepository.create(user)
+ async function create_user(req: Request, resp: Response, next: NextFunction){
+    const user = req.body as Userr;
+    const success =  await UserRepository.create(user)
     resp.send({
         'status': 'created'
     })
