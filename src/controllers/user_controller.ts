@@ -10,6 +10,7 @@ import UserRepository from "../repository/user_repository"
     })
 }
 
+
 function get_user_by_document_number(req: Request, resp: Response, next: NextFunction){
     const params = req.params
     const document_number = params['document_number']

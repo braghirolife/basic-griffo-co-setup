@@ -15,10 +15,10 @@ async function create(user: Userr){
     return user_to_b_created
 }
 
-async function get_user_by_document_number(owner_document_number: string){
+async function get_user_by_document_number(owner_name: string){
     let user = session.findOne({
         'where': {
-            first_name : owner_document_number
+            last_name : owner_name
         }
     })    
 

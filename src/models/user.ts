@@ -16,4 +16,7 @@ export class Userr{
 
     @Column()
     age: number
+
+    // @Column()
+    // document_number: string
 }
