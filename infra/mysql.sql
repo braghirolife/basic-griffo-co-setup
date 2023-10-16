@@ -18,9 +18,9 @@ CREATE TABLE Customer(
     date_of_birth DATE
 );
 
-CREATE TABLE wallet(
+CREATE TABLE Wallet(
     id SERIAL PRIMARY KEY,
-    user_key VARCHAR(36) UNIQUE NOT NULL,
+    user_key VARCHAR(40) UNIQUE NOT NULL,
     FOREIGN KEY (user_key) REFERENCES Customer (user_key) ON DELETE CASCADE
 );
 

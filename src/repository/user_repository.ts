@@ -12,9 +12,6 @@ async function create(user: Customer){
     user_to_b_created.person_name = user.person_name
     // user_to_b_created.date_of_birth = user.date_of_birth
     user_to_b_created.user_password = user.user_password
-    user_to_b_created.user_key = uuidv4()
-    user_to_b_created.person_name = user.person_name
-
 
     const user_created = session.create(user_to_b_created)
     await session.save(user_created)
