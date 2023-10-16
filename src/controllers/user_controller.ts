@@ -1,36 +1,49 @@
 import { Request, Response, NextFunction } from "express";
-import { Userr } from "../models/user";
+import { Customer } from "../models/user";
 import UserRepository from "../repository/user_repository"
 
+export interface UserInterface{
+    id: number,
+    user_key: string,
+    username: string,
+    user_password: string,
+    person_name: string,
+    date_of_birth: string
+}
+
+// <{}, {}, UserInterface>,
+
  async function create_user(req: Request, resp: Response, next: NextFunction){
-    const user = req.body as Userr;
+    const user = req.body as Customer;
+    // const user : UserInterface = req.body
     const success =  await UserRepository.create(user)
     resp.send({
-        'status': 'created'
+        'message': 'created'
     })
+    resp.status(200)
 }
 
 
 function get_user_by_document_number(req: Request, resp: Response, next: NextFunction){
-    const params = req.params
-    const document_number = params['document_number']
+    // const params = req.params
+    // const document_number = params['document_number']
 
-    const user = UserRepository.get_user_by_document_number(document_number)
+    // const user = UserRepository.get_user_by_document_number(document_number)
 
-    if (user === null){
-        resp.send({
-            'title': 'BAD REQUEST',
-            'status_code': 400
-        })
-        resp.status(400)
-    }
+    // if (user === null){
+    //     resp.send({
+    //         'title': 'BAD REQUEST',
+    //         'status_code': 400
+    //     })
+    //     resp.status(400)
+    // }
     // else{
     //     resp.send({
     //         'name': user.
     //     })
     //     resp.status(200)
     // }
-
+    return
 }
 
 export default {
