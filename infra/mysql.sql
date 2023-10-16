@@ -24,10 +24,11 @@ CREATE TABLE Wallet(
     FOREIGN KEY (user_key) REFERENCES Customer (user_key) ON DELETE CASCADE
 );
 
--- CREATE TABLE stock(
---     ticker VARCHAR(6) PRIMARY KEY,
---     current_price NUMERIC(5, 2)
--- );
+CREATE TABLE Stock(
+    id SERIAL PRIMARY KEY
+    ticker VARCHAR(6) UNIQUE NOT NULL,
+    current_price DECIMAL(20, 2) NOT NULL
+);
 
 -- CREATE TABLE wallet_stock(
 --     wallet_id INTEGER REFERENCES wallet ON DELETE CASCADE,
