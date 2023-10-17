@@ -11,11 +11,8 @@ export interface UserInterface{
     date_of_birth: string
 }
 
-// <{}, {}, UserInterface>,
-
  async function create_user(req: Request, resp: Response, next: NextFunction){
     const user = req.body as Customer;
-    // const user : UserInterface = req.body
     const success =  await UserRepository.create(user)
     resp.send({
         'message': 'created'

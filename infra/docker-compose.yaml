@@ -53,6 +53,8 @@ services:
       - '3001:3001'
     networks:
       - dev
+    volumes:
+      - /Users/fernandobraghiroli/griffo/basic-griffo-co-setup:/app
     extra_hosts:
       - "docker.for.mac.host.internal:host-gateway"
 

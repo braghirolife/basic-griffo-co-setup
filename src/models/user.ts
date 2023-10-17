@@ -35,12 +35,21 @@ export class Customer{
     // @JoinColumn({ name: 'user_key', referencedColumnName: 'user_key' })
     // wallet: Wallet;
 
+    @Column(
+        {
+            length: 11,
+            nullable: false,
+            unique: true
+        }
+    )
+    document_number: string
+
     @BeforeInsert()
     generateUUID() {
         this.user_key = uuidv4(); // Generate a UUID before insertion
     }
-    // @Column({
-    //     type: 'date'
-    // })
-    // date_of_birth: string
+    @Column({
+        type: 'date'
+    })
+    date_of_birth: string
 }

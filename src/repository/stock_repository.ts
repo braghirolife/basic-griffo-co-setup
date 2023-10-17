@@ -1,7 +1,5 @@
 import myDataSource from "../utils/app-data-source"
 import { Stock } from "../models/stock";
-import axios from "axios";
-import { response } from "express";
 
 const session = myDataSource.getRepository(Stock)
 
