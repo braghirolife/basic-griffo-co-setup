@@ -10,19 +10,19 @@ async function update_stock(stock_payload: any){
 
     const stock_in_db = await session.findOne({
         where:{
-            ticker: stock_payload.ticker
+            ticker: stock_payload.results[0].symbol
         }
     })
     
     if (stock_in_db != null){
-        stock_in_db.current_price = stock_payload.current_price
+        stock_in_db.current_price = stock_payload.results[0].regularMarketPrice
         await session.save(stock_in_db)
     } else{
         let stock = new Stock()
-        stock.current_price = stock_payload.current_price
-        stock.ticker = stock_payload.ticker
+        stock.current_price = stock_payload.results[0].regularMarketPrice
+        stock.ticker = stock_payload.results[0].symbol
         const stock_created = await session.create(stock)
-        await session.save(stock_created)
+        await session.save(stock_created).then((result) => console.log(result)).catch((error) => console.log(error))
     } 
     return
 }

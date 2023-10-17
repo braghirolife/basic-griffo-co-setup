@@ -22,11 +22,16 @@ async function update_stock_price(req: Request<{}, {}, StockInterface>, resp: Re
         })
     }
 
-    const url_get_stock_data = `${BRASPI_URL}/quote/${ticker}`
+    const url_get_stock_data = `${BRASPI_URL}/quote/${ticker}/?token=${TOKEN}`
     const result = await axios.get(url_get_stock_data)
     const data = result.data
 
     StockRepository.update_stock(data)
+
+    resp.status(200)
+    resp.send({
+        'message': 'updated'
+    })
 }
 
 function buy_stock_by_user(bought_stock_payload: BoughtStockInterface){
