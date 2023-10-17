@@ -40,6 +40,7 @@ services:
     command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; npm run dev'
     environment: 
         DB_HOST: 'postgres'
+        TOKEN: 'v42EJmqBCT3dzRHYxQGN3n'
     depends_on:
       - postgres
     links:

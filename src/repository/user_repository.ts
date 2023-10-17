@@ -1,8 +1,5 @@
-import { json } from "stream/consumers";
 import myDataSource from "../utils/app-data-source"
 import { Customer } from "../models/user";
-import { UserInterface } from "src/controllers/user_controller";
-import {v4 as uuidv4} from 'uuid';
 
 const session = myDataSource.getRepository(Customer)
 
@@ -18,17 +15,7 @@ async function create(user: Customer){
     return user_to_b_created
 }
 
-// async function get_user_by_document_number(owner_name: string){
-//     let user = session.findOne({
-//         'where': {
-//             last_name : owner_name
-//         }
-//     })    
-
-//     return user
-// }
 
 export default {
     create
-    // get_user_by_document_number
 }

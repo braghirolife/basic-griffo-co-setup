@@ -5,6 +5,8 @@ import helmet from 'helmet';
 import myDataSource from "./utils/app-data-source";
 import UserRoute from "./routers/user_router";
 import WalletRoute from "./routers/wallet_router";
+import StockRoute from "./routers/stock_router";
+
 
 setTimeout(() => 
 {
@@ -40,5 +42,7 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
 app.use('/user', UserRoute);
 
 app.use('/wallet', WalletRoute)
+
+app.use('/stock', StockRoute)
 
 export default app;

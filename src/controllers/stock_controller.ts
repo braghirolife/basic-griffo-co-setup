@@ -1,17 +1,39 @@
-interface StockInterface{
+import { Request, Response, NextFunction } from "express";
+import { TOKEN, BRASPI_URL } from "../constants"
+import axios from 'axios';
+import { Stock } from "../models/stock";
+import StockRepository from "../repository/stock_repository";
 
+interface StockInterface{
+    ticker?: string
 }
 
 interface BoughtStockInterface{
 
 }
 
-export default function update_stock(stock_payload: StockInterface){
-    let stock_updated = stock_payload
+async function update_stock_price(req: Request<{}, {}, StockInterface>, resp: Response, next: NextFunction){
+    const ticker = req.body?.ticker
 
-    return stock_updated
+    if (ticker == null){
+        resp.status(400)
+        resp.send({
+            'message': 'Deu ruim'
+        })
+    }
+
+    const url_get_stock_data = `${BRASPI_URL}/quote/${ticker}`
+    const result = await axios.get(url_get_stock_data)
+    const data = result.data
+
+    StockRepository.update_stock(data)
 }
 
-export default function buy_stock_by_user(bought_stock_payload: BoughtStockInterface){
-    
+function buy_stock_by_user(bought_stock_payload: BoughtStockInterface){
+    return
+}
+
+export default{
+    update_stock_price,
+    buy_stock_by_user
 }
