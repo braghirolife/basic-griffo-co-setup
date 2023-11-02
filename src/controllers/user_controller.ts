@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { Customer } from "../models/user";
 import UserRepository from "../repository/user_repository"
+import { cpf } from "cpf-cnpj-validator";
 
 export interface UserInterface{
     id: number,
@@ -14,6 +15,14 @@ export interface UserInterface{
  async function create_user(req: Request, resp: Response, next: NextFunction){
     const user = req.body as Customer;
     const success =  await UserRepository.create(user)
+    if(cpf.isValid(user.document_number) == false){
+        resp.status(400)
+        resp.send(
+            {
+                "message": "Invalid CPF"
+            }
+        )
+    }
     resp.send({
         'message': 'created'
     })
