@@ -7,7 +7,7 @@ CREATE TABLE Customer(
     user_key VARCHAR(40) UNIQUE NOT NULL,
     username VARCHAR(30) UNIQUE,
     user_password VARCHAR(30) NOT NULL,
-    person_name VARCHAR(30) NOT NULL,
+    -- person_name VARCHAR(30) NOT NULL,
     date_of_birth DATE NOT NULL,
     document_number VARCHAR(11) UNIQUE NOT NULL
 );
