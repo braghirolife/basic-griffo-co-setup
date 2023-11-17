@@ -12,6 +12,11 @@ export interface UserInterface{
     date_of_birth: string
 }
 
+export interface UserLoginInfo{
+    username: string,
+    user_password: string
+}
+
  async function create_user(req: Request, resp: Response, next: NextFunction){
     const user = req.body as Customer;
     const success =  await UserRepository.create(user)
@@ -27,6 +32,12 @@ export interface UserInterface{
         'message': 'created'
     })
     resp.status(200)
+}
+
+async function verify_user_password(req: Request, resp: Response, next: NextFunction){
+    const user_login_info = req.body as UserLoginInfo
+
+    const user_in_db = UserRepository.
 }
 
 
