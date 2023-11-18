@@ -1,0 +1,11 @@
+FROM node:18 as webapi
+ADD ./infra/mysql.sql /docker-entrypoint-initdb.d
+WORKDIR /app
+COPY . .
+RUN echo $(ls -a)
+RUN npm install
+EXPOSE 3001
+CMD ["npm", "run", "dev"]
+
+FROM postgres:latest as db
+COPY . .

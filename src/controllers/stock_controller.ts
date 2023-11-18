@@ -34,11 +34,22 @@ async function update_stock_price(req: Request<{}, {}, StockInterface>, resp: Re
     })
 }
 
+async function get_cryptocurrency_info(req: Request, resp: Response, next: NextFunction){
+    const cryptocurrency_symbol = req.params.symbol
+    const url_get_crypto_data = `${BRASPI_URL}/v2/crypto?coin=${cryptocurrency_symbol}&token=${TOKEN}`
+
+    const cryptocurrency_data = await axios.get(url_get_crypto_data).then((result) => result.data)
+
+    resp.status(200)
+    resp.send(cryptocurrency_data)
+}
+
 function buy_stock_by_user(bought_stock_payload: BoughtStockInterface){
     return
 }
 
 export default{
     update_stock_price,
-    buy_stock_by_user
+    buy_stock_by_user,
+    get_cryptocurrency_info
 }
