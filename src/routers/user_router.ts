@@ -5,6 +5,6 @@ const router = Router()
 
 router.post('/', UserController.create_user)
 
-router.get('/:document_number', UserController.get_user_by_document_number)
+router.post('/login', UserController.login_user)
 
 export default router

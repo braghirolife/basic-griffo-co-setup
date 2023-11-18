@@ -40,6 +40,7 @@ services:
     command: bash -c 'while !</dev/tcp/postgres/5432; do sleep 1; done; npm run dev'
     environment: 
         DB_HOST: 'postgres'
+        TOKEN: 'v42EJmqBCT3dzRHYxQGN3n'
     depends_on:
       - postgres
     links:
@@ -49,9 +50,11 @@ services:
       dockerfile: Dockerfile-api
       target: webapi
     ports:
-      - '3000:3000'
+      - '3001:3001'
     networks:
       - dev
+    volumes:
+      - /Users/fernandobraghiroli/griffo/basic-griffo-co-setup:/app
     extra_hosts:
       - "docker.for.mac.host.internal:host-gateway"
 

@@ -13,7 +13,7 @@ const myDataSource = new DataSource({
     entities: ["src/models/*.{ts,js}"],
     migrations: ["scr/migrations/*.{ts,js}"],
     logging: true,
-    synchronize: false,
+    synchronize: true,
 })
 
 export default myDataSource;
