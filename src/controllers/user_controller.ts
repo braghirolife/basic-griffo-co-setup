@@ -34,10 +34,25 @@ export interface UserLoginInfo{
     resp.status(200)
 }
 
-async function verify_user_password(req: Request, resp: Response, next: NextFunction){
+async function login_user(req: Request, resp: Response, next: NextFunction){
     const user_login_info = req.body as UserLoginInfo
+    const user_in_db = UserRepository.get_user_by_login_and_password(user_login_info)
+    if (user_in_db === null){
+        resp.status(404)
+        resp.send(
+            {
+                "message": "Error while trying to login. User not found."
+            }
+        )
+        return
+    } 
 
-    const user_in_db = UserRepository.
+    resp.status(200)
+    resp.send(
+        {
+            "message":  "User successfully logged in."
+        }
+    )
 }
 
 
@@ -65,5 +80,5 @@ function get_user_by_document_number(req: Request, resp: Response, next: NextFun
 
 export default {
     create_user,
-    get_user_by_document_number
+    login_user
 }

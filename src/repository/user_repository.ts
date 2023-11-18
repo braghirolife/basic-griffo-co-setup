@@ -17,16 +17,19 @@ async function create(user: Customer){
     return user_to_b_created
 }
 
-async function get_user_by_login(user_login_info: UserLoginInfo){
+async function get_user_by_login_and_password(user_login_info: UserLoginInfo){
     const user_in_db = await session.findOne({
         where: {
             username: user_login_info.username,
             user_password: user_login_info.user_password
         }
-    }).then((customer) => customer).catch(() => console.log("Error while"))
+    }).then((customer) => customer).catch(() => console.log("Error while gettin User from database"))
+
+    return user_in_db
 }
 
 
 export default {
-    create
+    create,
+    get_user_by_login_and_password
 }
