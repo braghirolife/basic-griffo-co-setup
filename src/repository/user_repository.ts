@@ -28,8 +28,19 @@ async function get_user_by_login_and_password(user_login_info: UserLoginInfo){
     return user_in_db
 }
 
+async function get_user_by_login(username: string){
+    const user_in_db = await session.findOne({
+        where: {
+            username: username
+        }
+    }).then((user) => user)
+
+    return user_in_db
+}
+
 
 export default {
     create,
-    get_user_by_login_and_password
+    get_user_by_login_and_password,
+    get_user_by_login
 }

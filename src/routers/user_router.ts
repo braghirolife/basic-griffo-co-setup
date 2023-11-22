@@ -7,4 +7,6 @@ router.post('/', UserController.create_user)
 
 router.post('/login', UserController.login_user)
 
+router.get('/', UserController.get_user_info)
+
 export default router

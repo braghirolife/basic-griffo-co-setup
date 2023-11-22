@@ -55,30 +55,28 @@ async function login_user(req: Request, resp: Response, next: NextFunction){
     )
 }
 
+async function get_user_info(req: Request, resp: Response, next: NextFunction){
+    const username = req.query?.username
 
-function get_user_by_document_number(req: Request, resp: Response, next: NextFunction){
-    // const params = req.params
-    // const document_number = params['document_number']
+    if (username === null) {
+        resp.status(404)
+        resp.send({
+            "message": "User not found."
+        })
+        return
+    }
 
-    // const user = UserRepository.get_user_by_document_number(document_number)
+    const user_in_db = await UserRepository.get_user_by_login(username?.toString()).then((user) => user)
 
-    // if (user === null){
-    //     resp.send({
-    //         'title': 'BAD REQUEST',
-    //         'status_code': 400
-    //     })
-    //     resp.status(400)
-    // }
-    // else{
-    //     resp.send({
-    //         'name': user.
-    //     })
-    //     resp.status(200)
-    // }
-    return
+    resp.status(200)
+    resp.send(
+        user_in_db
+    )
+
 }
 
 export default {
     create_user,
-    login_user
+    login_user,
+    get_user_info
 }
