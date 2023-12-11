@@ -24,12 +24,12 @@ export class Customer{
     )
     user_password: string
 
-    // @Column(
-    //     {
-    //         nullable: false
-    //     }
-    // )
-    // person_name: string
+    @Column(
+        {
+            nullable: false
+        }
+    )
+    person_name: string
     
     // @OneToOne(() => Wallet, (wallet: Wallet) => wallet.customer)
     // @JoinColumn({ name: 'user_key', referencedColumnName: 'user_key' })

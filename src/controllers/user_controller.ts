@@ -31,43 +31,34 @@ export interface UserLoginInfo{
 
 async function login_user(req: Request, resp: Response, next: NextFunction){
     const user_login_info = req.body as UserLoginInfo
-    const user_in_db = UserRepository.get_user_by_login_and_password(user_login_info)
-    if (user_in_db === null){
-        resp.status(404)
-        resp.send(
-            {
-                "message": "Error while trying to login. User not found."
-            }
-        )
-        return
-    } 
+    const user_in_db = await UserRepository.get_user_by_login_and_password(user_login_info)
 
-    resp.status(200)
-    resp.send(
-        {
-            "message":  "User successfully logged in."
-        }
-    )
+    if (user_in_db === null) {
+        return resp.status(404).json({
+            "message": "Error while trying to login. User not found."
+        })
+    } else {
+        delete user_in_db.user_key
+        delete user_in_db.user_password
+
+        return resp.status(200).json({
+            "message": "User successfully logged in.",
+            "data": user_in_db
+        })
+    }
 }
 
 async function get_user_info(req: Request, resp: Response, next: NextFunction){
     const username = req.query?.username
 
     if (username === null) {
-        resp.status(404)
-        resp.send({
-            "message": "User not found."
-        })
-        return
+        return resp.status(404).json({ "message": "User not found." })
     }
 
-    const user_in_db = await UserRepository.get_user_by_login(username?.toString()).then((user) => user)
+    const user_in_db = await UserRepository.get_user_by_login(username?.toString())
+        .then((user) => user)
 
-    resp.status(200)
-    resp.send(
-        user_in_db
-    )
-
+    return resp.status(200).json(user_in_db)
 }
 
 export default {
