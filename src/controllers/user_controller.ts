@@ -19,19 +19,14 @@ export interface UserLoginInfo{
 
  async function create_user(req: Request, resp: Response, next: NextFunction){
     const user = req.body as Customer;
-    const success =  await UserRepository.create(user)
-    if(cpf.isValid(user.document_number) == false){
-        resp.status(400)
-        resp.send(
-            {
-                "message": "Invalid CPF"
-            }
-        )
+    // const success =  await UserRepository.create(user)
+    await UserRepository.create(user)
+
+    if(cpf.isValid(user.document_number) == false) {        
+        return resp.status(400).json({ "message": "Invalid CPF" })
+    } else {
+        return resp.status(200).json({ "message": "created", data: user })
     }
-    resp.send({
-        'message': 'created'
-    })
-    resp.status(200)
 }
 
 async function login_user(req: Request, resp: Response, next: NextFunction){

@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { TOKEN, BRASPI_URL } from "../constants"
 import axios from 'axios';
-import { Stock } from "../models/stock";
-import StockRepository from "../repository/stock_repository";
+// import { Stock } from "../models/stock";
+// import StockRepository from "../repository/stock_repository";
 
 interface StockInterface{
     ticker?: string
@@ -26,7 +26,7 @@ async function update_stock_price(req: Request<{}, {}, StockInterface>, resp: Re
     const result = await axios.get(url_get_stock_data)
     const data = result.data
 
-    StockRepository.update_stock(data)
+    // StockRepository.update_stock(data)
 
     resp.status(200)
     resp.send({
